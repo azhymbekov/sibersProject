@@ -1,0 +1,43 @@
+﻿@model Sibers.Services.ProjectService.Models.ProjectForDisplay
+
+@{
+    ViewData["Title"] = "Назначение";
+    var employees = ViewBag.Employees as IEnumerable<SelectListItem>;
+}
+
+<h1>Проект @Model.Name</h1>
+
+<hr />
+<form asp-action="AppointEmployees">
+    <div asp-validation-summary="All"></div>
+    <input asp-for="Id" type="hidden" />
+    <div class="row">
+        <div class="col-md-6">
+            <table id="projectsTable" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Назначьте сотрудников для проекта</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in employees)
+                    {
+                        <tr>
+                            <th scope="row">@employee.Text</th>
+                            <td><input type="checkbox" name="Employees" value="@employee.Value" checked="@employee.Selected"></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div>
+                <button type="submit" class="btn btn-primary">Назначить</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

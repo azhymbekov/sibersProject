@@ -1,0 +1,59 @@
+﻿@model Sibers.Services.EmployeeService.Models.EmployeeForView
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали сотрудника</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    <div class="col-6">
+        <h3>Проекты сотрудника</h3>
+        <table>
+            <tr>
+                <th>Наименование</th>
+            </tr>
+            @foreach (var proj in Model.Projects)
+            {
+                <tr>
+                    <td>@proj</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<br />
+<div>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }) |
+    <a asp-action="Index">Назад</a>
+</div>

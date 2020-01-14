@@ -1,0 +1,60 @@
+﻿@model Sibers.Services.ProjectService.Models.ProjectDto
+
+@{
+    ViewData["Title"] = "Проекты";
+}
+
+<h1>Детали</h1>
+
+<div>
+    <h4>Проект</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.CustomerCompany)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CustomerCompany)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ExecutorCompany)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ExecutorCompany)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Supervisor)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Supervisor)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.BeginDate)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.BeginDate)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Priority)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Priority)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }) |
+    <a asp-action="Index">Назад в список</a>
+</div>

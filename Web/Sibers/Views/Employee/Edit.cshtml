@@ -1,0 +1,75 @@
+﻿@model Sibers.Services.EmployeeService.Models.EmployeeEditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    var projects = ViewBag.Projects as IEnumerable<SelectListItem>;
+}
+
+<h2>Редактирование сотрудника</h2>
+<\br>
+
+<form asp-action="Edit">
+    <input asp-for="Id" type="hidden" />
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patronymic" class="control-label"></label>
+                <input asp-for="Patronymic" class="form-control" />
+                <span asp-validation-for="Patronymic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Редактировать" class="btn btn-primary" />
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Назначить на проект</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (projects.Count() > 0)
+                    {
+                        @foreach (var project in projects)
+                        {
+                            <tr>
+                                <th scope="row">@project.Text</th>
+                                <td><input type="checkbox" name="Projects" value="@project.Value" checked="@project.Selected"></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <th scope="row">Проекты не назначены</th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
